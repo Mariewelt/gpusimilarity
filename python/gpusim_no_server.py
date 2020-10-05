@@ -165,7 +165,6 @@ def main():
             break
         if output:
             print("line: ", output.strip())
-    rc = process.poll()
     #for stdout_line in iter(backend_proc.stdout.readline, ""):
     #    print("Line: ", stdout_line) 
     #for line in io.TextIOWrapper(backend_proc.stdout, encoding="utf-8"):
