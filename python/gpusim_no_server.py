@@ -155,11 +155,13 @@ def main():
     cmdline += db
     backend_proc = subprocess.Popen(cmdline)
     setup_socket(app)
-    while True:
+    wait = True
+    while wait:
         if backend_proc.stdout is not None:
             line = backend_proc.stdout.readline()
-            if line == "Ready for searches":
-                break
+            print("Line: ", line)
+            if line == "Ready for searches.":
+                wait = False
             else:
                 print(line)
     for mol in mol_list:
