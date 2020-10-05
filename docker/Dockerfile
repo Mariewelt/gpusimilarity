@@ -24,7 +24,7 @@ RUN pip install image
 ENV BRANCH=master
 
 # Used to prevent github cache from stopping rebuild when branch changes
-#ADD https://api.github.com/repos/schrodinger/gpusimilarity/git/refs/heads/$BRANCH version.txt
+ADD https://api.github.com/repos/Mariewelt/gpusimilarity/git/refs/heads/$BRANCH version.txt
 
 #RUN cd ../ && \
 #    mkdir bld && cd bld && cmake ../ && make -j5
