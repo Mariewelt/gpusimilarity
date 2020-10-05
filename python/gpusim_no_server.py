@@ -157,12 +157,12 @@ def main():
     cmdline += db
     backend_proc = subprocess.Popen(cmdline)
     setup_socket(app)
-    time.sleep(60)
+    time.sleep(70)
     for mol in mol_list:
         print(mol)
         approximate_results, smiles, ids, scores, src_smiles = \
         search_for_results(mol, return_count, similarity_cutoff, ["default"], [""])
-        print("Results: ", appoximate_results)
+        print("Results: ", approximate_results)
     backend_proc.kill()
         
 if __name__ == '__main__':
