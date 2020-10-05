@@ -160,7 +160,7 @@ def main():
     setup_socket(app)
     while True:
         output = backend_proc.stdout.readline()
-        print(output)
+        print("Output: ", output)
         if output == '' and backend_proc.poll() is not None:
             break
         if output:
