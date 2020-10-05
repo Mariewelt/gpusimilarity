@@ -142,7 +142,10 @@ def main():
     args = parse_args()
     db = args.dbnames
     #all_dbs = args.dbnames
-    mol_list = args.smiles
+    f = open(args.sm_file)
+    mol_list = []
+    for line in f:
+        mol_list.append(line[:-1])
     similarity_cutoff = args.cutoff
     return_count = args.return_count
     # Try to connect to the GPU backend
@@ -152,16 +155,11 @@ def main():
     cmdline = [GPUSIM_EXEC]
     cmdline += ['--gpu_bitcount', args.gpu_bitcount]
     cmdline += db
-    print(cmdline)
     backend_proc = subprocess.Popen(cmdline)
     setup_socket(app)
-    print("I am here")
     for mol in mol_list:
-        print(mol)
         approximate_results, smiles, ids, scores, src_smiles = \
         search_for_results(mol, return_count, similarity_cutoff, ["default"], [""])
-        print("Results: ", approximate_results)
-        print("Source smiles: ", mol)
         backend_proc.kill()
         
 if __name__ == '__main__':
