@@ -149,8 +149,6 @@ def main():
     #for db in all_dbs:
         # Start the GPU backend
     cmdline = [GPUSIM_EXEC]
-    if args.cpu_only:
-        cmdline.append('--cpu_only')
     cmdline += ['--gpu_bitcount', args.gpu_bitcount]
     cmdline += db
     print(cmdline)
