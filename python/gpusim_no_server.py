@@ -156,7 +156,7 @@ def main():
     backend_proc = subprocess.Popen(cmdline)
     setup_socket(app)
     while True:
-        line = proc.stdout.readline()
+        line = backend_proc.stdout.readline()
         if line == "Ready for searches":
             break
         else:
@@ -165,6 +165,7 @@ def main():
         print(mol)
         approximate_results, smiles, ids, scores, src_smiles = \
         search_for_results(mol, return_count, similarity_cutoff, ["default"], [""])
+        print("Results: ", appoximate_results)
     backend_proc.kill()
         
 if __name__ == '__main__':
