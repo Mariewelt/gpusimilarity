@@ -156,11 +156,12 @@ def main():
     backend_proc = subprocess.Popen(cmdline)
     setup_socket(app)
     while True:
-        line = backend_proc.stdout.readline()
-        if line == "Ready for searches":
-            break
-        else:
-            print(line)
+        if backend_proc.stdout is not None:
+            line = backend_proc.stdout.readline()
+            if line == "Ready for searches":
+                break
+            else:
+                print(line)
     for mol in mol_list:
         print(mol)
         approximate_results, smiles, ids, scores, src_smiles = \
