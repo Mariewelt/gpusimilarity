@@ -154,15 +154,17 @@ def main():
         cmdline.append('--cpu_only')
     cmdline += ['--gpu_bitcount', args.gpu_bitcount]
     cmdline += db
+    print(cmdline)
     backend_proc = subprocess.Popen(cmdline)
+    print("I am here")
     for mol in mol_list:
+        print(mol)
         approximate_results, smiles, ids, scores, src_smiles = \
         search_for_results(mol, return_count, similarity_cutoff, dbnames, dbkeys)
         print("Results: ", approximate_results)
         print("Source smiles: ", mol)
         backend_proc.kill()
    
-
 
 if __name__ == '__main__':
     main()
