@@ -156,6 +156,7 @@ def main():
     backend_proc = subprocess.Popen(cmdline)
     setup_socket(app)
     for mol in mol_list:
+        print(mol)
         approximate_results, smiles, ids, scores, src_smiles = \
         search_for_results(mol, return_count, similarity_cutoff, ["default"], [""])
         backend_proc.kill()
