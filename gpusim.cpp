@@ -20,6 +20,7 @@
 #include <QThread>
 #include <QThreadPool>
 #include <QTime>
+#include <QTextStream>
 
 #include <algorithm>
 #include <exception>
@@ -45,7 +46,13 @@ using namespace std;
 const int DATABASE_VERSION = 3;
 
 namespace gpusim
-    
+
+QTextStream& qStdOut()
+{
+    static QTextStream ts( stdout );
+    return ts;
+}
+        
 {
 
 class DecompressAssignFPRunnable : public QRunnable
@@ -166,7 +173,7 @@ GPUSimServer::GPUSimServer(const QStringList& database_fnames, int gpu_bitcount)
     }
     qInfo() << "Finished putting graphics card data up.";
     qInfo() << "Ready for searches.";
-    cout << "I AM HERE";
+    qStdOut() << "I AM HERE";
 };
 
 bool GPUSimServer::usingGPU()
