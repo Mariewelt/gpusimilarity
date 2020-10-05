@@ -159,7 +159,7 @@ def main():
         print(mol)
         approximate_results, smiles, ids, scores, src_smiles = \
         search_for_results(mol, return_count, similarity_cutoff, ["default"], [""])
-        backend_proc.kill()
+    backend_proc.kill()
         
 if __name__ == '__main__':
     main()
