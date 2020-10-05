@@ -157,7 +157,7 @@ def main():
     cmdline += db
     backend_proc = subprocess.Popen(cmdline)
     setup_socket(app)
-    time.sleep(30)
+    time.sleep(60)
     for mol in mol_list:
         print(mol)
         approximate_results, smiles, ids, scores, src_smiles = \
