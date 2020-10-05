@@ -163,7 +163,6 @@ def main():
         print("Results: ", approximate_results)
         print("Source smiles: ", mol)
         backend_proc.kill()
-   
-
+        
 if __name__ == '__main__':
     main()
