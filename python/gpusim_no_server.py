@@ -155,30 +155,9 @@ def main():
     cmdline = [GPUSIM_EXEC]
     cmdline += ['--gpu_bitcount', args.gpu_bitcount]
     cmdline += db
-    backend_proc = subprocess.Popen(cmdline, stdout=subprocess.PIPE)
-    #stdout = backend_proc.communicate()[0]
+    backend_proc = subprocess.Popen(cmdline)
     setup_socket(app)
-    while True:
-        output = backend_proc.stdout.readline()
-        print("Output: ", output)
-        if output == '' and backend_proc.poll() is not None:
-            break
-        if output:
-            print("line: ", output.strip())
-    #for stdout_line in iter(backend_proc.stdout.readline, ""):
-    #    print("Line: ", stdout_line) 
-    #for line in io.TextIOWrapper(backend_proc.stdout, encoding="utf-8"):
-    #    print("Line: ", line)
-    #wait = True
-    #while wait:
-    #    print(backend_proc.stdout)
-    #    if backend_proc.stdout is not None:
-    #        line = backend_proc.stdout.readline()
-    #        print("Line: ", line)
-    #        if line == "Ready for searches.":
-    #            wait = False
-    #        else:
-    #            print(line)
+    time.sleep(30)
     for mol in mol_list:
         print(mol)
         approximate_results, smiles, ids, scores, src_smiles = \
