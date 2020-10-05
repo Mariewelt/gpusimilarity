@@ -48,10 +48,12 @@ def get_data(dbnames, dbkeys, src_smiles, return_count,
     output_qds = QtCore.QDataStream(output_qba, QtCore.QIODevice.WriteOnly)
 
     output_qds.writeInt(len(dbnames))
+    print("2: ", len(dbnames))
     for name, key in zip(dbnames, dbkeys):
         output_qds.writeString(name.encode())
         output_qds.writeString(key.encode())
-
+    
+    print("3: ", request_num)
     output_qds.writeInt(request_num)
     output_qds.writeInt(return_count)
     output_qds.writeFloat(similarity_cutoff)
@@ -92,6 +94,7 @@ def search_for_results(src_smiles, return_count, similarity_cutoff, dbnames, dbk
     search_mutex.lock()
     try:
         request_num = random.randint(0, 2**31)
+        print("1: ", request_num)
         print("Processing request {0}".format(request_num),
               file=sys.stderr) #noqa
         output_qba = get_data(dbnames, dbkeys, src_smiles,
