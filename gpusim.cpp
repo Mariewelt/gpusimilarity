@@ -30,6 +30,9 @@
 
 #include "fingerprintdb_cuda.h"
 #include "local_qinfo.h"
+#include <iostream>
+
+using namespace std;
 
 using gpusim::Fingerprint;
 using gpusim::FingerprintDB;
@@ -163,6 +166,7 @@ GPUSimServer::GPUSimServer(const QStringList& database_fnames, int gpu_bitcount)
     }
     qInfo() << "Finished putting graphics card data up.";
     qInfo() << "Ready for searches.";
+    cout << "Ready for searches.";
 };
 
 bool GPUSimServer::usingGPU()
