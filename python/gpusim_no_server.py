@@ -12,7 +12,7 @@ import subprocess
 import sys
 import time
 import tempfile
-
+import pexpect
 import io
 
 from PyQt5 import QtCore, QtNetwork
@@ -155,7 +155,14 @@ def main():
     cmdline = [GPUSIM_EXEC]
     cmdline += ['--gpu_bitcount', args.gpu_bitcount]
     cmdline += db
-    backend_proc = subprocess.Popen(cmdline)
+    backend_proc = pexpect.spawn(cmdline)
+    while True:
+        try:
+            backend_proc.expect('Ready for searches.')
+            print(backend_proc.before)
+        except pexpect.EOF:
+            break
+    #backend_proc = subprocess.Popen(cmdline)
     setup_socket(app)
     time.sleep(200)
     for mol in mol_list:

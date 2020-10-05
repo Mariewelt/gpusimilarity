@@ -19,6 +19,8 @@ RUN apt-get update && apt-get install -y \
 
 RUN pip install image
 RUN pip install pillow
+RUN pip install pexpect
+
 
 # IMPORTANT:  Change this to remote branch you want to build
 ENV BRANCH=master
