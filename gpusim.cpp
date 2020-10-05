@@ -27,12 +27,10 @@
 #include <math.h>
 #include <set>
 #include <sstream>
+#include <iostream>
 
 #include "fingerprintdb_cuda.h"
 #include "local_qinfo.h"
-#include <iostream>
-
-using namespace std;
 
 using gpusim::Fingerprint;
 using gpusim::FingerprintDB;
