@@ -57,6 +57,7 @@ class GPUSimHandler(BaseHTTPRequestHandler):
                      'CONTENT_TYPE': self.headers['Content-Type'],
                      })
 
+        
         dbnames = form["dbnames"].value.split(',')
         try:
             dbkeys = form["dbkeys"].value.split(',')
@@ -64,7 +65,8 @@ class GPUSimHandler(BaseHTTPRequestHandler):
             dbkeys = [""]
         if len(dbnames) != len(dbkeys):
             raise RuntimeError("Need key for each database.")
-
+        print(dbkeys)
+        print(dbnames)
         return (form["smiles"].value.strip(), int(form["return_count"].value),
                 float(form["similarity_cutoff"].value), dbnames, dbkeys)
 
@@ -257,7 +259,7 @@ def parse_args():
     parser = argparse.ArgumentParser(description="Sample GPUSim Server - "
             "run an HTTP server that loads fingerprint data onto GPU and " #noqa
             "responds to queries to find most similar fingperints.") #noqa
-    parser.add_argument('dbnames', help=".fsim files containing fingerprint "
+    parser.add_argument('--dbnames', help=".fsim files containing fingerprint "
                         "data to be searched", nargs='*')
     parser.add_argument('--hostname', default="localhost",
                         help="Hostname to run on")
