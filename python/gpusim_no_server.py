@@ -155,10 +155,12 @@ def main():
     cmdline = [GPUSIM_EXEC]
     cmdline += ['--gpu_bitcount', args.gpu_bitcount]
     cmdline += db
-    backend_proc = subprocess.Popen(cmdline, stdout=subprocess.PIPE)
+    backend_proc = subprocess.Popen(cmdline, stdout=subprocess.PIPE, universal_newlines=True)
     setup_socket(app)
-    for line in io.TextIOWrapper(backend_proc.stdout, encoding="utf-8"):
-        print("Line: ", line)
+    for stdout_line in iter(backend_proc.stdout.readline, ""):
+        print("Line: ", stdout_line) 
+    #for line in io.TextIOWrapper(backend_proc.stdout, encoding="utf-8"):
+    #    print("Line: ", line)
     #wait = True
     #while wait:
     #    print(backend_proc.stdout)
