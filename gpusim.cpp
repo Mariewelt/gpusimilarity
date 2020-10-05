@@ -40,10 +40,12 @@ using std::set;
 using std::shared_ptr;
 using std::string;
 using std::vector;
+using namespace std;
 
 const int DATABASE_VERSION = 3;
 
 namespace gpusim
+    
 {
 
 class DecompressAssignFPRunnable : public QRunnable
@@ -164,7 +166,7 @@ GPUSimServer::GPUSimServer(const QStringList& database_fnames, int gpu_bitcount)
     }
     qInfo() << "Finished putting graphics card data up.";
     qInfo() << "Ready for searches.";
-    cout << "Ready for searches.";
+    cout << "I AM HERE";
 };
 
 bool GPUSimServer::usingGPU()

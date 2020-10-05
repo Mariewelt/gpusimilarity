@@ -157,6 +157,7 @@ def main():
     backend_proc = subprocess.Popen(cmdline, stdout=subprocess.PIPE)
     setup_socket(app)
     while True:
+        print("I am here")
         output = backend_proc.stdout.readline()
         print("line: ", output)
         #if output == '' and process.poll() is not None:
