@@ -116,7 +116,7 @@ def parse_args():
     parser.add_argument('--dbnames', help=".fsim files containing fingerprint "
                         "data to be searched", nargs='*')
     parser.add_argument('--dbkeys', help=" ", default="", nargs='*')
-    parser.add_argument('--smiles', help="list of SMILES queries "
+    parser.add_argument('--sm_file', help="file with SMILES queries "
                         "to be processed", nargs='*')
     parser.add_argument('--cutoff', help="similarity cutoff", type=float, default=0.8)
     parser.add_argument('--return_count', help="numer of results "
@@ -150,8 +150,6 @@ def main():
     return_count = args.return_count
     # Try to connect to the GPU backend
     app = QtCore.QCoreApplication([])
-    #for db in all_dbs:
-        # Start the GPU backend
     cmdline = [GPUSIM_EXEC]
     cmdline += ['--gpu_bitcount', args.gpu_bitcount]
     cmdline += db
