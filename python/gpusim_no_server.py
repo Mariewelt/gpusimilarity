@@ -161,7 +161,7 @@ def main():
     #    print("Line: ", line)
     wait = True
     while wait:
-        #print(backend_proc.stdout)
+        print(backend_proc.stdout)
         if backend_proc.stdout is not None:
             line = backend_proc.stdout.readline()
             print("Line: ", line)
