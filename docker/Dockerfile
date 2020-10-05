@@ -17,8 +17,8 @@ RUN wget https://github.com/rdkit/rdkit/archive/Release_2019_03_1.tar.gz && \
 RUN apt-get update && apt-get install -y \
     python-pip
 
-RUN pip install pillow
 RUN pip install image
+RUN pip install pillow
 
 # IMPORTANT:  Change this to remote branch you want to build
 ENV BRANCH=master

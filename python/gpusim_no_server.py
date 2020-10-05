@@ -48,12 +48,10 @@ def get_data(dbnames, dbkeys, src_smiles, return_count,
     output_qds = QtCore.QDataStream(output_qba, QtCore.QIODevice.WriteOnly)
 
     output_qds.writeInt(len(dbnames))
-    print("2: ", len(dbnames))
     for name, key in zip(dbnames, dbkeys):
         output_qds.writeString(name.encode())
         output_qds.writeString(key.encode())
     
-    print("3: ", request_num)
     output_qds.writeInt(request_num)
     output_qds.writeInt(return_count)
     output_qds.writeFloat(similarity_cutoff)
@@ -94,7 +92,6 @@ def search_for_results(src_smiles, return_count, similarity_cutoff, dbnames, dbk
     search_mutex.lock()
     try:
         request_num = random.randint(0, 2**31)
-        print("1: ", request_num)
         print("Processing request {0}".format(request_num),
               file=sys.stderr) #noqa
         output_qba = get_data(dbnames, dbkeys, src_smiles,
@@ -116,7 +113,7 @@ def parse_args():
     parser = argparse.ArgumentParser(description="Sample GPUSim Server - "
             "run an HTTP server that loads fingerprint data onto GPU and " #noqa
             "responds to queries to find most similar fingperints.") #noqa
-    parser.add_argument('--dbnames', help=".fsim files containing fingerprint "
+    parser.add_argument('dbnames', help=".fsim files containing fingerprint "
                         "data to be searched", nargs='*')
     parser.add_argument('--dbkeys', help=" ", default="", nargs='*')
     parser.add_argument('--smiles', help="list of SMILES queries "
