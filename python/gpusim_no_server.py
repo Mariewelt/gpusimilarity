@@ -157,18 +157,18 @@ def main():
     cmdline += db
     backend_proc = subprocess.Popen(cmdline, stdout=subprocess.PIPE)
     setup_socket(app)
-    #for line in io.TextIOWrapper(backend_proc.stdout, encoding="utf-8"):
-    #    print("Line: ", line)
-    wait = True
-    while wait:
-        print(backend_proc.stdout)
-        if backend_proc.stdout is not None:
-            line = backend_proc.stdout.readline()
-            print("Line: ", line)
-            if line == "Ready for searches.":
-                wait = False
-            else:
-                print(line)
+    for line in io.TextIOWrapper(backend_proc.stdout, encoding="utf-8"):
+        print("Line: ", line)
+    #wait = True
+    #while wait:
+    #    print(backend_proc.stdout)
+    #    if backend_proc.stdout is not None:
+    #        line = backend_proc.stdout.readline()
+    #        print("Line: ", line)
+    #        if line == "Ready for searches.":
+    #            wait = False
+    #        else:
+    #            print(line)
     for mol in mol_list:
         print(mol)
         approximate_results, smiles, ids, scores, src_smiles = \
