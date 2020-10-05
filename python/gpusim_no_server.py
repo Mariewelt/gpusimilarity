@@ -117,7 +117,7 @@ def parse_args():
                         "data to be searched", nargs='*')
     parser.add_argument('--dbkeys', help=" ", default="", nargs='*')
     parser.add_argument('--sm_file', help="file with SMILES queries "
-                        "to be processed", nargs='*')
+                        "to be processed")
     parser.add_argument('--cutoff', help="similarity cutoff", type=float, default=0.8)
     parser.add_argument('--return_count', help="numer of results "
                         "to be searched", type=int, default=20)
