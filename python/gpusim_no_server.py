@@ -113,7 +113,7 @@ def parse_args():
     parser = argparse.ArgumentParser(description="Sample GPUSim Server - "
             "run an HTTP server that loads fingerprint data onto GPU and " #noqa
             "responds to queries to find most similar fingperints.") #noqa
-    parser.add_argument('dbnames', help=".fsim files containing fingerprint "
+    parser.add_argument('--dbnames', help=".fsim files containing fingerprint "
                         "data to be searched", nargs='*')
     parser.add_argument('--dbkeys', help=" ", default="", nargs='*')
     parser.add_argument('--smiles', help="list of SMILES queries "
