@@ -11,7 +11,7 @@ RUN wget https://github.com/rdkit/rdkit/archive/Release_2019_03_1.tar.gz && \
     -DCMAKE_INSTALL_PREFIX=/usr -DPYTHON_EXECUTABLE=/usr/bin/python3 \
     -DRDK_INSTALL_STATIC_LIBS=OFF -DRDK_BUILD_CPP_TESTS=OFF .. && \
     make && make install && cd / && rm -rf Release_2019_03_1.tar.gz  \
-    rdkit-Release_2019_03_1 && pip3 install pillow image
+    rdkit-Release_2019_03_1
 
 # IMPORTANT:  Change this to remote branch you want to build
 ENV BRANCH=master
