@@ -121,9 +121,9 @@ def parse_args():
     parser.add_argument('--dbkeys', help=" ", default="", nargs='*')
     parser.add_argument('--smiles', help="list of SMILES queries "
                         "to be processed", nargs='*')
-    parser.add_argument('--cutoff', help="similarity cutoff", default=0.8)
+    parser.add_argument('--cutoff', help="similarity cutoff", type=float, default=0.8)
     parser.add_argument('--return_count', help="numer of results "
-                        "to be searched", default=20)
+                        "to be searched", type=int, default=20)
     parser.add_argument('--gpu_bitcount', default='0',
                         help="Provide the maximum bitcount for fingerprints on GPU") #noqa
     parser.add_argument('--debug', action='store_true', help="Run the backend inside GDB") #noqa
