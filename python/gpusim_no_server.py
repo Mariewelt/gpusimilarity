@@ -156,7 +156,7 @@ def main():
     cmdline += ['--gpu_bitcount', args.gpu_bitcount]
     cmdline += db
     backend_proc = subprocess.Popen(cmdline, stdout=subprocess.PIPE)
-    stdout = backend_proc.communicate()[0]
+    #stdout = backend_proc.communicate()[0]
     setup_socket(app)
     while True:
         output = backend_proc.stdout.readline()
