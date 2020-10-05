@@ -155,7 +155,12 @@ def main():
     cmdline += db
     backend_proc = subprocess.Popen(cmdline)
     setup_socket(app)
-    time.sleep(60)
+    while True:
+        line = proc.stdout.readline()
+        if line == "Ready for searches":
+            break
+        else:
+            print(line)
     for mol in mol_list:
         print(mol)
         approximate_results, smiles, ids, scores, src_smiles = \
