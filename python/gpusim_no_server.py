@@ -157,6 +157,7 @@ def main():
     setup_socket(app)
     wait = True
     while wait:
+        print(backend_proc.stdout)
         if backend_proc.stdout is not None:
             line = backend_proc.stdout.readline()
             print("Line: ", line)
