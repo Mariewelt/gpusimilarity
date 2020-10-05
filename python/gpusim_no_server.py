@@ -72,6 +72,8 @@ def flush_socket():
 def deserialize_results(request_num, output_qba):
     data_reader = QtCore.QDataStream(output_qba)
     returned_request = data_reader.readInt()
+    print(returned_request)
+    print(request_num)
     if request_num != returned_request:
         raise RuntimeError("Incorrect result ID returned!")
     return_count = data_reader.readInt()
