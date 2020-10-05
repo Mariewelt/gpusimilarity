@@ -146,7 +146,6 @@ def main():
     return_count = args.return_count
     # Try to connect to the GPU backend
     app = QtCore.QCoreApplication([])
-    setup_socket(app)
     #for db in all_dbs:
         # Start the GPU backend
     cmdline = [GPUSIM_EXEC]
@@ -156,6 +155,7 @@ def main():
     cmdline += db
     print(cmdline)
     backend_proc = subprocess.Popen(cmdline)
+    setup_socket(app)
     print("I am here")
     for mol in mol_list:
         print(mol)
