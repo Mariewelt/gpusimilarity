@@ -158,7 +158,7 @@ def main():
     for mol in mol_list:
         approximate_results, smiles, ids, scores, src_smiles = \
         search_for_results(mol, return_count, similarity_cutoff, dbnames, dbkeys)
-        print("Results": , approximate_results)
+        print("Results: ", approximate_results)
         print("Source smiles: ", mol)
         backend_proc.kill()
    

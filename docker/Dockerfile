@@ -13,14 +13,26 @@ RUN wget https://github.com/rdkit/rdkit/archive/Release_2019_03_1.tar.gz && \
     make && make install && cd / && rm -rf Release_2019_03_1.tar.gz  \
     rdkit-Release_2019_03_1
 
+
+RUN apt-get update && apt-get install -y \
+    python-pip
+
+RUN pip install pillow
+RUN pip install image
+
 # IMPORTANT:  Change this to remote branch you want to build
 ENV BRANCH=master
 
 # Used to prevent github cache from stopping rebuild when branch changes
-ADD https://api.github.com/repos/schrodinger/gpusimilarity/git/refs/heads/$BRANCH version.txt
+#ADD https://api.github.com/repos/schrodinger/gpusimilarity/git/refs/heads/$BRANCH version.txt
 
-RUN git clone https://github.com/schrodinger/gpusimilarity.git && \
-    cd gpusimilarity && \
+#RUN cd ../ && \
+#    mkdir bld && cd bld && cmake ../ && make -j5
+
+
+    
+RUN git clone https://github.com/Mariewelt/gpusimilarity.git && \
+    cd gpusimilarity && \    
     git checkout $BRANCH && \
     mkdir bld && cd bld && cmake ../ && make -j5
 
