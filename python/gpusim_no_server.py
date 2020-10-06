@@ -73,8 +73,6 @@ def flush_socket():
 def deserialize_results(request_num, output_qba):
     data_reader = QtCore.QDataStream(output_qba)
     returned_request = data_reader.readInt()
-    print(returned_request)
-    print(request_num)
     if request_num != returned_request:
         raise RuntimeError("Incorrect result ID returned!")
     return_count = data_reader.readInt()
@@ -158,20 +156,19 @@ def main():
     backend_proc = subprocess.Popen(cmdline, stdout=subprocess.PIPE)
     setup_socket(app)
     output = backend_proc.stdout.readline()
-    print(output)
     if os.path.exists(args.res_file):
         f = open(args.res_file, "a")
     else:
         f = open(args.res_file, "w")
+        f.writelines("src_smiles,result,similarity,db_id\n")
     for mol in mol_list:
         print(mol)
         approximate_results, smiles, ids, scores, src_smiles = \
         search_for_results(mol, return_count, similarity_cutoff, ["default"], [""])
         print("Results: ", approximate_results)
         if len(smiles) > 0:
-            f.writelines(src_smiles + "\n")
             for i in range(len(smiles)):
-                f.writelines(smiles[i] + "," + str(scores[i]) + "," + str(ids[i]) + "\n")
+                f.writelines(src_smiles + "," + smiles[i] + "," + str(scores[i]) + "," + str(ids[i]) + "\n")
     f.close()
     backend_proc.kill()
         
