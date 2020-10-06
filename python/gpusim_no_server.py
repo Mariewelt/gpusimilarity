@@ -119,6 +119,7 @@ def parse_args():
     parser.add_argument('--dbkeys', help=" ", default="", nargs='*')
     parser.add_argument('--sm_file', help="file with SMILES queries "
                         "to be processed")
+    parser.add_argument('--res_file', help="file for results")
     parser.add_argument('--cutoff', help="similarity cutoff", type=float, default=0.8)
     parser.add_argument('--return_count', help="numer of results "
                         "to be searched", type=int, default=20)
@@ -158,11 +159,20 @@ def main():
     setup_socket(app)
     output = backend_proc.stdout.readline()
     print(output)
+    if os.path.exists(args.res_file):
+        f = open(args.res_file, "a")
+    else:
+        f = open(args.res_file, "w")
     for mol in mol_list:
         print(mol)
         approximate_results, smiles, ids, scores, src_smiles = \
         search_for_results(mol, return_count, similarity_cutoff, ["default"], [""])
         print("Results: ", approximate_results)
+        if len(smiles) > 0:
+            f.writelines(src_smiles + "\n")
+            for i in range(len(smiles)):
+                f.writelines(smiles[i] + "," + str(scores[i]) + "," str(ids[i]) + "\n")
+    f.close()
     backend_proc.kill()
         
 if __name__ == '__main__':
