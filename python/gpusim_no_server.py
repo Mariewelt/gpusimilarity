@@ -156,9 +156,8 @@ def main():
     cmdline += db
     backend_proc = subprocess.Popen(cmdline, stdout=subprocess.PIPE)
     setup_socket(app)
-    while True:
-        output = backend_proc.stdout.readline()
-        break    
+    output = backend_proc.stdout.readline()
+    print(output)
     for mol in mol_list:
         print(mol)
         approximate_results, smiles, ids, scores, src_smiles = \
