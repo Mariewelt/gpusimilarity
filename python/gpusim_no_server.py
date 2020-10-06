@@ -171,7 +171,7 @@ def main():
         if len(smiles) > 0:
             f.writelines(src_smiles + "\n")
             for i in range(len(smiles)):
-                f.writelines(smiles[i] + "," + str(scores[i]) + "," str(ids[i]) + "\n")
+                f.writelines(smiles[i] + "," + str(scores[i]) + "," + str(ids[i]) + "\n")
     f.close()
     backend_proc.kill()
         
