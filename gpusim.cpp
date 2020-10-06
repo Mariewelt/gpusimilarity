@@ -28,7 +28,6 @@
 #include <math.h>
 #include <set>
 #include <sstream>
-#include <iostream>
 
 #include "fingerprintdb_cuda.h"
 #include "local_qinfo.h"
@@ -41,18 +40,10 @@ using std::set;
 using std::shared_ptr;
 using std::string;
 using std::vector;
-using namespace std;
 
 const int DATABASE_VERSION = 3;
 
 namespace gpusim
-
-QTextStream& qStdOut()
-{
-    static QTextStream ts( stdout );
-    return ts;
-}
-
         
 {
 
@@ -174,7 +165,12 @@ GPUSimServer::GPUSimServer(const QStringList& database_fnames, int gpu_bitcount)
     }
     qInfo() << "Finished putting graphics card data up.";
     qInfo() << "Ready for searches.";
-    qStdOut() << "I AM HERE";
+    
+    QString str = "I AM HERE\n";
+    QTextStream out(stdout, QIODevice::WriteOnly);
+ 
+    out << str;
+    
 };
 
 bool GPUSimServer::usingGPU()
