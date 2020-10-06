@@ -46,13 +46,13 @@ using namespace std;
 const int DATABASE_VERSION = 3;
 
 namespace gpusim
-{
+
 QTextStream& qStdOut()
 {
     static QTextStream ts( stdout );
     return ts;
 }
-}
+
         
 {
 
