@@ -166,7 +166,7 @@ GPUSimServer::GPUSimServer(const QStringList& database_fnames, int gpu_bitcount)
     qInfo() << "Finished putting graphics card data up.";
     qInfo() << "Ready for searches.";
     
-    QString str = "I AM HERE\n";
+    QString str = "Ready for searches.";
     QTextStream out(stdout, QIODevice::WriteOnly);
  
     out << str;

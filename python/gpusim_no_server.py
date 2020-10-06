@@ -157,14 +157,8 @@ def main():
     backend_proc = subprocess.Popen(cmdline, stdout=subprocess.PIPE)
     setup_socket(app)
     while True:
-        print("I am here")
         output = backend_proc.stdout.readline()
-        print("line: ", output)
-        #if output == '' and process.poll() is not None:
-        #    break
-        #if output:
-        #    print(output.strip())
-    #time.sleep(200)
+        break    
     for mol in mol_list:
         print(mol)
         approximate_results, smiles, ids, scores, src_smiles = \
